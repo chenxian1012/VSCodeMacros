@@ -1,0 +1,17 @@
+{
+    "name": "macros",
+    "version": "1.0.0",
+    "main": "./dist/macros.js",
+    "scripts": {
+        "watch": "tsc -w",
+        "watch-noEmit": "tsc --noEmit --watch",
+        "compile": "tsc"
+    },
+    "keywords": [],
+    "author": "very chen",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "@types/vscode": "^1.94.0"
+    }
+}
