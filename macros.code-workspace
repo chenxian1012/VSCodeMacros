@@ -11,6 +11,14 @@
 		"typescript.inlayHints.parameterTypes.enabled": true,
 		"typescript.inlayHints.propertyDeclarationTypes.enabled": true,
 		"typescript.inlayHints.variableTypes.enabled": true,
-		"typescript.suggest.completeFunctionCalls": false
+		"typescript.suggest.completeFunctionCalls": false,
+		"peacock.color": "#42b883",
+		"workbench.colorCustomizations": {
+			"statusBar.background": "#42b883",
+			"statusBar.foreground": "#15202b",
+			"statusBarItem.hoverBackground": "#359268",
+			"statusBarItem.remoteBackground": "#42b883",
+			"statusBarItem.remoteForeground": "#15202b"
+		}
 	}
 }
