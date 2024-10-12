@@ -20,5 +20,22 @@
 			"statusBarItem.remoteBackground": "#42b883",
 			"statusBarItem.remoteForeground": "#15202b"
 		}
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "npm start watch",
+				"type": "shell",
+				"command": "npm run 监视TS - 生成JS",
+				"runOptions": {
+					"runOn": "folderOpen"
+				},
+				"isBackground": true,
+				"problemMatcher": [
+					"$tsc-watch"
+				]
+			}
+		]
 	}
 }
