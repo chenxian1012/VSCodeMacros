@@ -13,18 +13,22 @@ export const LogKey = {
  * @param time 时间单位毫秒，默认`500`
  */
 export async function WaitTime(time = 500) {
-    await new Promise((resolve) => setTimeout(resolve, time));
+    return new Promise(resolve => setTimeout(resolve, time));
 }
 
 /**
  * 打开对应文件
  * @param fileName 文件名
  */
-export async function OpenFile(fileName: string) {
-    await vscode.commands.executeCommand("workbench.action.quickOpen", `${fileName}`);
-    await WaitTime();
-    await vscode.commands.executeCommand("workbench.action.acceptSelectedQuickOpenItem");
-    await vscode.window.showInformationMessage(`打开：${fileName}`);
+export async function OpenFile(fileName: string): Promise<void> {
+    try {
+        await vscode.commands.executeCommand("workbench.action.quickOpen", `${fileName}`);
+        await WaitTime();
+        await vscode.commands.executeCommand("workbench.action.acceptSelectedQuickOpenItem");
+        await vscode.window.showInformationMessage(`打开：${fileName}`);
+    } catch (error) {
+        void vscode.window.showErrorMessage(`打开文件失败: ${error}`);
+    }
 }
 
 /**

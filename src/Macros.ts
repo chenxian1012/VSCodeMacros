@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import *  as Common from "./Common";
+import * as Common from "./Common";
 
 /** 添加新命令接口需要在这里先定义 */
 enum EMacroKey {
@@ -26,22 +26,10 @@ type IMacroCommands = {
 
 /** vscode macros 插件获取命令的入口 */
 export const macroCommands: IMacroCommands = {
-    [EMacroKey.MoveToFuncStart]: {
-        no: 0,
-        func: MoveToFuncStart,
-    },
-    [EMacroKey.MoveToFuncEnd]: {
-        no: 0,
-        func: MoveToFuncEnd,
-    },
-    [EMacroKey.OpenTestTs]: {
-        no: 0,
-        func: OpenTestTs
-    },
-    [EMacroKey.OpenRawJs]: {
-        no: 0,
-        func: OpenRawJs
-    }
+    [EMacroKey.MoveToFuncStart]: { no: 0, func: MoveToFuncStart },
+    [EMacroKey.MoveToFuncEnd]: { no: 0, func: MoveToFuncEnd },
+    [EMacroKey.OpenTestTs]: { no: 0, func: OpenTestTs },
+    [EMacroKey.OpenRawJs]: { no: 0, func: OpenRawJs },
 };
 
 /** 移动到方法头 */
@@ -76,7 +64,7 @@ async function OpenRawJs() {
 
     const document = edit.document;
     const fileName = document.fileName;
-    const fileExtension = fileName.substring(fileName.lastIndexOf(".") + 1);
+    const fileExtension = fileName.split('.').pop(); // 使用 split() 获取文件扩展名
     if (fileExtension !== "ts") {
         vscode.window.showErrorMessage(Common.LogKey.NeedSelectTsFile);
         return;
@@ -94,6 +82,7 @@ async function OpenRawJs() {
         `JavaScript_Raw/${fileNameWithoutExtension}.js`
     );
     await Common.WaitTime();
+
     // 接受选择结果
     await vscode.commands.executeCommand("workbench.action.acceptSelectedQuickOpenItem");
     await vscode.window.showInformationMessage(`打开：${fileNameWithoutExtension}.js (Raw)`);
