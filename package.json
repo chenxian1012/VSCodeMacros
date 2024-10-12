@@ -3,9 +3,9 @@
     "version": "1.0.0",
     "main": "./dist/macros.js",
     "scripts": {
-        "watch": "tsc -w",
-        "watch-noEmit": "tsc --noEmit --watch",
-        "compile": "tsc"
+        "监视TS - 生成JS": "tsc -w",
+        "监视TS是否报错 - 不生成JS": "tsc --noEmit --watch",
+        "手动编译TS": "tsc"
     },
     "keywords": [],
     "author": "very chen",
