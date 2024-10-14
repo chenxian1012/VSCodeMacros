@@ -44,7 +44,13 @@
 				"isBackground": true,
 				"problemMatcher": [
 					"$tsc-watch"
-				]
+				],
+				"options": {
+					"shell": {
+						"executable": "cmd.exe",
+						"args": ["/c"]
+					}
+				}
 			}
 		]
 	}
