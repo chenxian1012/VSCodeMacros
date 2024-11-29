@@ -25,9 +25,9 @@ export async function OpenFile(fileName: string): Promise<void> {
         await vscode.commands.executeCommand("workbench.action.quickOpen", `${fileName}`);
         await WaitTime();
         await vscode.commands.executeCommand("workbench.action.acceptSelectedQuickOpenItem");
-        await vscode.window.showInformationMessage(`打开：${fileName}`);
+        vscode.window.showInformationMessage(`打开：${fileName}`);
     } catch (error) {
-        void vscode.window.showErrorMessage(`打开文件失败: ${error}`);
+        vscode.window.showErrorMessage(`打开文件失败: ${error}`);
     }
 }
 
@@ -51,7 +51,7 @@ async function _FindWithArgs(key: string, isRegex: boolean): Promise<boolean> {
             isCaseSensitive: false,
         });
     } catch (error) {
-        void vscode.window.showErrorMessage(`${error}`);
+        vscode.window.showErrorMessage(`${error}`);
         return false;
     }
 
@@ -70,7 +70,7 @@ export async function FindStrFromLast(key: string, isRegex = false): Promise<boo
     await vscode.commands.executeCommand("editor.action.previousMatchFindAction"); // 移动到上一个匹配项
     await vscode.commands.executeCommand("closeFindWidget"); // 关闭查找
     await vscode.commands.executeCommand("cursorHome"); // 移动到行头
-    await vscode.window.showInformationMessage("已定位到方法头");
+    vscode.window.showInformationMessage("已定位到方法头");
 
     return true;
 }
@@ -90,7 +90,7 @@ export async function FindStrFromNext(key: string, isRegex = false): Promise<boo
     await vscode.commands.executeCommand("cursorUp"); // 向上移动一行
     await vscode.commands.executeCommand("cursorDown"); //先上后下才能定位
     await vscode.commands.executeCommand("cursorEnd"); // 移动到行尾
-    await vscode.window.showInformationMessage("已定位到方法尾");
+    vscode.window.showInformationMessage("已定位到方法尾");
 
     return true;
 }
@@ -102,7 +102,7 @@ export async function FindStrFromNext(key: string, isRegex = false): Promise<boo
 export function EditFileIsClass(): boolean | undefined {
     const edit = vscode.window.activeTextEditor;
     if (!edit) {
-        void vscode.window.showErrorMessage(LogKey.NotFindEditor);
+        vscode.window.showErrorMessage(LogKey.NotFindEditor);
         return undefined;
     }
 
@@ -112,6 +112,6 @@ export function EditFileIsClass(): boolean | undefined {
     );
     const index = edit.document.getText(range).indexOf("class ");
     const isClass = index !== -1;
-    void vscode.window.showInformationMessage(`当前文件为Class：${isClass}`);
+    vscode.window.showInformationMessage(`当前文件为Class：${isClass}`);
     return isClass;
 }
