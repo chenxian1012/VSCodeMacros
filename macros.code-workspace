@@ -23,7 +23,7 @@
 		"typescript.suggest.completeFunctionCalls": true,
 		"editor.formatOnType": true,
 		"editor.minimap.autohide": true,
-		"editor.minimap.enabled": true,
+		"editor.minimap.enabled": false,
 		"editor.suggest.preview": true,
 		"editor.guides.bracketPairs": "active",
 		"editor.snippetSuggestions": "top",
